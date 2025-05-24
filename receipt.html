@@ -65,7 +65,7 @@
         .top-details {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             padding: 0.6rem;
             background: #f8f9fa;
             border-bottom: 1px solid #e0e0e0;
@@ -74,23 +74,9 @@
         .top-details .detail-row {
             display: flex;
             flex-direction: column;
-            gap: 0.15rem;
-            width: 33.33%;
-        }
-
-        .top-details .detail-row.date-row {
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .top-details .detail-row.pin-row {
             align-items: center;
-            text-align: center;
-        }
-
-        .top-details .detail-row.reference-row {
-            align-items: flex-end;
-            text-align: right;
+            gap: 0.15rem;
+            flex: 1;
         }
 
         .top-details .detail-key {
@@ -117,10 +103,6 @@
             background: #ffd700;
             padding: 0.2rem 0.5rem;
             border-radius: 3px;
-        }
-
-        .top-details .pin-row.hidden {
-            display: none;
         }
 
         .receipt-body {
@@ -243,7 +225,7 @@
         </div>
         
         <div class="top-details">
-            <div class="detail-row date-row">
+            <div class="detail-row">
                 <div class="detail-key">Date</div>
                 <div class="detail-value" id="date">N/A</div>
             </div>
@@ -251,7 +233,7 @@
                 <div class="detail-key">Transaction PIN</div>
                 <div class="detail-value" id="pin"></div>
             </div>
-            <div class="detail-row reference-row">
+            <div class="detail-row">
                 <div class="detail-key">Reference Number</div>
                 <div class="detail-value" id="referenceNumber"></div>
             </div>
@@ -449,7 +431,7 @@
             serviceFee: params.get('serviceCharge') ? addCommas(params.get('serviceCharge').replace(/ BND$/, '')) : 'N/A',
             totalPaid: params.get('totalAmount') ? addCommas(params.get('totalAmount').replace(/ BND$/, '')) : 'N/A',
             payoutAmount: params.get('amount') ? `${addCommas(params.get('amount'))} ${countryDetails.currency}` : 'N/A',
-            exchangeRate: params.get('exchangeRate') ? `1 = ${addCommas(params.get('exchangeRate').replace(/ [A-Z]+$/i, ''))}` : 'N/A',
+            exchangeRate: params.get('exchangeRate') ? `1=${addCommas(params.get('exchangeRate').replace(/\s*[A-Z]{3}$/, ''))}` : 'N/A',
             beneficiaryName: params.get('beneficiaryName') || 'N/A',
             beneficiaryMobile: params.get('beneficiaryMobile') || 'N/A',
             bankName: params.get('bankName') || 'N/A',
