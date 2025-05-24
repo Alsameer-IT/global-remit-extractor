@@ -225,7 +225,7 @@
         </div>
         
         <div class="top-details">
-            <div class="detail-row">
+            <div class contacter="detail-row">
                 <div class="detail-key">Date</div>
                 <div class="detail-value" id="date">N/A</div>
             </div>
@@ -431,7 +431,7 @@
             serviceFee: params.get('serviceCharge') ? addCommas(params.get('serviceCharge').replace(/ BND$/, '')) : 'N/A',
             totalPaid: params.get('totalAmount') ? addCommas(params.get('totalAmount').replace(/ BND$/, '')) : 'N/A',
             payoutAmount: params.get('amount') ? `${addCommas(params.get('amount'))} ${countryDetails.currency}` : 'N/A',
-            exchangeRate: params.get('exchangeRate') ? `1 = ${addCommas(params.get('exchangeRate').replace(/ BDT$/, ''))}` : 'N/A',
+            exchangeRate: params.get('exchangeRate') ? `1 = ${addCommas(params.get('exchangeRate').replace(/ [A-Z]+$/i, ''))}` : 'N/A',
             beneficiaryName: params.get('beneficiaryName') || 'N/A',
             beneficiaryMobile: params.get('beneficiaryMobile') || 'N/A',
             bankName: params.get('bankName') || 'N/A',
